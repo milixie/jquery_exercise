@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jquery exercise</title>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 effect show-hide">
+			<a href="javascript:void(0);">点击文字将消失或者显示</a>
+			<p>点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示点击文字将消失或者显示</p>
+		</div>
+		<div class="col-md-4 effect fade-in-out">
+			<a href="javascript:void(0);">点击文字将淡入或者淡出</a>
+			<p>点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出点击文字将淡入或者淡出</p>
+		</div>
+		<div class="col-md-4 effect fade-to">
+			<a href="javascript:void(0);">点击文字将淡入或者淡出到固定透明度</a>
+			<p>点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到固定透明度点击文字将淡入或者淡出到</p>
+		</div>
+		<div class="col-md-4 effect slide-up-down">
+			<a href="javascript:void(0);">点击文字将滑入或者滑出</a>
+			<p>点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出</p>
+		</div>
+		<div class="col-md-4 effect animate">
+			<a href="javascript:void(0);">点击文字将变大</a>
+			<p>点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大点击文字将变大</p>
+		</div>
+		<div class="col-md-4 effect animate-toggle">
+			<a href="javascript:void(0);">点击文字将使用animate的方式滑入或者滑出</a>
+			<p>点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出点击文字将滑入或者滑出</p>
+		</div>
+		<div class="animate-control col-md-4">
+			<a href="javascript:void(0)" class="start">点击开始动画</a>
+			<a href="javascript:void(0)" class="stop">点击停止动画</a>
+			<div class="animate-queue"></div>
+		</div>
+
+		<div class="animate-control col-md-4">
+			<a href="javascript:void(0)" class="chain">点击开始动画</a>
+			<div class="animate-chain"></div>
+		</div>
+
+		<div class="col-md-4 get-content">
+			<button type="button" class="set-text">点击改变文本内容</button>
+			<p class="text">you can change text content when click btn</p>
+			<button type="button" class="set-html">点击改变文本内容</button>
+			<p class="html"><a href="javascript:void(0)">link to us</a></p>
+			<button type="button" class="set-val">点击改变文本内容</button>
+			<input class="val" value="点击改变文本内容"><br>
+			<button type="button" class="get-attr">点击获取attr</button>
+			<a class="attr" href="https://github.com/milixie" target="_blank">milixie github home page</a>
+			<p class="attr-content">a标签的链接地址是：<span></span></p>
+		</div>
+
+		<div class="col-md-4 append-content">
+			<button type="button" class="add-pre">点击增加内容</button>
+			<p class="append">使用append()/prepend()/after()/before()</p>
+		</div>
+		<div class="col-md-4 delete-content">
+			<button type="button" class="del-pre">点击delete内容</button>
+			<p class="delete">
+				ddddd
+				<span>使用remove()/empty()</span>
+				<span class="del">使用remove()/empty()</span>
+				<span class="del">使用remove()/empty()</span>
+				<span>使用remove()/empty()</span>
+			</p>
+		</div>
+
+		<div class="col-md-4 toggle-class">
+			<button type="button" class="add-class">点击增加/删除类内容</button>
+			<p class="class">test toggle class</p>
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>
