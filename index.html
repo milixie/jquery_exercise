@@ -6,7 +6,28 @@
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		var localHandler = function(data) {
+			alert('我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：' + data.result);
+		}
+		$.ajax({
+			type: 'get',
+			async: false,
+			url: 'http://7u2grt.com1.z0.glb.clouddn.com/flightResult.aspx?code=CA1998',
+			dataType: 'jsonp',
+			jsonp: 'callback',
+			jsonpCallback: 'flightHandler',
+			success: function(d) {
+				alert('航班信息：票价：' + d.price + '元，余票：' + d.tickets + '张。')
+			},
+			error : function(){
+				alert('fail');
+			}
+		})
+	</script>
+	<script type="text/javascript" src="http://7u2grt.com1.z0.glb.clouddn.com/romote.js"></script>
 </head>
 <body>
 <div class="container">
@@ -77,6 +98,120 @@
 			<button type="button" class="add-class">点击增加/删除类内容</button>
 			<p class="class">test toggle class</p>
 		</div>
+
+		<div class="col-md-4 ajax-load">
+			<button type="button" class="load-btn">点击异步加载文本内容</button>
+			<div class="load-content">这是加载前的文本内容</div>
+		</div>
+		<div class="col-md-4 ajax-get">
+			<button type="button" class="get-btn">点击使用get方法异步加载文本内容</button>
+			<div class="get-ajax">这是加载前的文本内容</div>
+		</div>
+		<div class="col-md-4 ajax-post">
+			<button type="button" class="post-btn">点击使用post方法异步加载文本内容</button>
+			<div class="post-ajax">这是加载前的文本内容</div>
+		</div>
+		<div class="col-md-4 no-conflict">
+			<button type="button" class="conflict-btn">点击释放$</button>
+			<p>使用jq去代替$，并且将$释放</p>
+		</div>
+
+		<div class="col-md-4 event-bind">
+			<button type="button" class="bind-click">click</button>
+			<p class="bind-text">test text</p>
+		</div>
+		<div class="col-md-4 event-blur">
+			<input type="input" name="" class="blur-text">
+		</div>
+		<div class="col-md-4 event-change">
+			<input type="input" name="" value="first" class="change-text">
+		</div>
+
+		<div class="col-md-4 event-delegate">
+			<button type="button" class="delegate-click">delegate event click</button>
+			<p>change background</p>
+		</div>
+
+		<div class="col-md-4 current-target">
+			<h1>click header</h1>
+		</div>
+		<div class="col-md-4 event-data">
+			<h1>click header</h1>
+			<h1>click header</h1>
+		</div>
+		<div class="col-md-4 event-delegate-target">
+			test
+			<h1>click header</h1>
+		</div>
+		<div class="col-md-4 prevent-default">
+			<a href="http://www.baidu.com">baidu</a>
+		</div>
+		<div class="col-md-4 stop-immediate-propagation">
+			<h1>click header</h1>
+		</div>
+		<div class="col-md-4 stop-propagation">
+			<div>click header
+				<p>里面的p元素 <br><span>里面的span元素</span></p>
+			</div>
+		</div>
+		<div class="col-md-4 name-space">
+			<div>click header</div>
+			<p>里面的p元素 <br><span>里面的span元素</span></p>
+		</div>
+
+		<div class="col-md-4 page-x-y">
+			<p>鼠标位置：<br>X:<span></span> <br>Y: <span></span></p>
+		</div>
+		<div class="col-md-4 event-target">
+			<h2>target test</h2>
+			<p>sahfeuieawheuihf</p>
+			<span>;sdjfio;aejgjoaerjfgierjgioj</span><br>
+			<strong></strong>
+		</div>
+		<div class="col-md-4 time-stamp">
+			<button type="button" class="time-long-click">返回从 1970 年 1 月 1 日到按钮单击事件发生时的毫秒数</button>
+			<h2>返回从 1970 年 1 月 1 日到按钮单击事件发生时的毫秒数:<span class="long-time"></span></h2>
+			<button type="button" class="time-short-click">返回两次点击之间的毫秒数</button>
+			<h2>返回两次点击之间的毫秒数:<span class="between-time"></span></h2>
+		</div>
+
+		<div class="col-md-4 which">
+			<input type="input" name="">
+			<p>Key: <span></span></p>
+		</div>
+
+		<div class="col-md-4 focus-in-out">
+			focus in: <input type="input" name="">
+			focus out: <input type="input" name="">
+		</div>
+
+		<div class="col-md-4 hover">
+			<p>hover</p>
+		</div>
+
+		<div class="col-md-4 mouse-up">
+			sldfjoawiejiojfioajwefoi
+		</div>
+
+		<div class="col-md-4 one">
+			<p>字体只会被增大一次 one</p>
+			<p>字体只会被增大一次 dsfa</p>
+			<p>字体只会被增大一次 onasdfaee</p>
+			<p>字体只会被增大一次 onasfeasrgsdrgbe</p>
+		</div>
+
+		<div class="col-md-4 wrap-test">
+			<button type="button">test wrap</button>
+			<button type="button">test unwrap</button>
+			<button type="button">test wrapAll</button>
+			<button type="button">test wrapInner</button>
+			<p>test wrap</p>
+			<p>test unwrap</p>
+			<p>test wrapAll</p>
+			<p>test wrapInner</p>
+		</div>
+
+
 		
 	</div>
 </div>

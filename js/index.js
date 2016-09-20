@@ -92,5 +92,184 @@ $(document).ready(function () {
 		$('.toggle-class p').toggleClass('class');
 	});
 
+	$('.ajax-load .load-btn').click(function(){
+		$('.load-content').load('http://7u2grt.com1.z0.glb.clouddn.com/ajax.txt',function(responseTxt, statusTxt, xhr){
+			if (statusTxt == "success") {
+				console.log('load success!');
+			}
+			if (statusTxt == 'error') {
+				console.log('error' + xhr.status + ',' + xhr.statusTxt)
+			}
+		});
+	});
 
+	$('.ajax-post .post-btn').click(function(){
+		$.post('http://7u2grt.com1.z0.glb.clouddn.com/post.php', {
+			name: "post exercise",
+			url: 'http://www.runoob.com/jquery/jquery-ajax-get-post.html'
+		},function(data, status){
+			alert(data + ',加载状态为：' + status);
+			$('.post-ajax').html(data + ',加载状态为：' + status)
+		});
+	});
+
+	// $('.event-bind p').bind('mouseover mouseout', function(){
+	// 	$(this).toggleClass('bind-text');
+	// });
+	// $('.event-bind .bind-click').bind('click', function(){
+	// 	$('.event-bind p').css('background-color', 'yellow')
+	// })
+	$('.event-bind p').bind({
+		click: function(){
+			$(this).css('background-color', '#f40')
+		},
+		mouseover: function(){
+			$(this).addClass('bind-text')
+		},
+		mouseout: function(){
+			$(this).removeClass('bind-text')
+		}
+	})
+
+	$('.event-blur .blur-text').blur(function(){
+		if (!$(this).val()){
+			alert('please input text')
+		}
+	})
+	$('.event-change .change-text').change(function(){
+		alert('text has been changed')
+	})
+
+	$('.event-delegate').delegate('.delegate-click', 'click', function(){
+		$('.event-delegate p').css('background-color', 'green');
+	})
+
+	$('.current-target h1').on('click', function(){
+		alert(event.currentTarget == this);
+	})
+	$('.event-data h1').each(function(i){
+		$(this).on('click',{x : i}, function(event){
+			alert($(event.currentTarget).index() + ',' + event.data.x)
+		})
+	})
+	$('.event-delegate-target').on('click', 'h1', function(event){
+		$(event.delegateTarget).css('background-color', 'red')
+	})
+	$('.prevent-default a').on('click', function(event){
+		event.preventDefault();
+		alert('链接a是否被阻止事件：' + (event.isDefaultPrevented() ? '是': '没有'))
+	})
+
+	$('.stop-immediate-propagation h1').on({
+		click: function(event){
+			$(event.currentTarget).css('background-color', 'yellow');
+			event.stopImmediatePropagation()
+			alert('剩下的事件处理程序是否被执行：' + (event.isImmediatePropagationStopped() ? 'NO' : 'Yes'))
+		}
+	})
+	$('.stop-immediate-propagation h1').on({
+		click: function(event){
+			$(event.delegateTarget).css('padding', '20px')
+		}
+	})
+
+	$('.stop-propagation span').on('click', function(){
+		alert('span被点击！！！')
+	})
+
+	$('.stop-propagation p').on('click', function(event){
+		alert('p被点击！！！')
+		event.stopPropagation()
+		alert('event.stopPropagation()是否阻止向div父元素冒泡：' + event.isPropagationStopped())
+	})
+
+	$('.stop-propagation div').on('click', function(){
+		alert('div被点击！！！')
+	})
+
+	$('.name-space p').on('custosssm.myClick', function(event){
+		alert(event.namespace);
+	})
+
+	$('.name-space p').click(function(){
+		$(this).trigger('custosssm.myClick')
+	})
+	$('.name-space div').click(function(){
+		$('.name-space p').off('custosssm.myClick')
+	})
+	$(document).on('mouseover', function(event){
+		$('.page-x-y').find('span').eq(0).html(event.pageX)
+		$('.page-x-y').find('span').eq(1).html(event.pageY)
+	})
+	$('.event-target h2, .event-target p, .event-target span').on('click', function(event){
+		$('.event-target strong').html(event.target.nodeName);
+	})
+
+	$('.time-stamp .time-long-click').on('click', function(event){
+		$('.time-stamp span.long-time').text(event.timeStamp);
+	})
+	var res;
+	$('.time-stamp .time-short-click').on('click', function(event){
+		if(res) {
+			$('.time-stamp span.between-time').text(event.timeStamp - res);
+		} else {
+			$('.time-stamp span.between-time').text('请再点击一次')
+		}
+		res = event.timeStamp;
+	})
+
+	$('.which input').keydown(function(event){
+		$('.which span').html(event.which);
+	})
+	$('.which input').keypress(function(event){
+		alert(event.which)
+	})
+
+	$('.focus-in-out').focusin(function(){
+		$(this).css('background-color', 'pink')
+	})
+	$('.focus-in-out').focusout(function(){
+		$(this).css('background-color', 'red')
+	})
+
+	$('.focus-in-out').find('input').eq(0).focus(function(){
+		$(this).css('background-color', 'red')
+	})
+
+	$('.focus-in-out').find('input').eq(1).focus(function(){
+		$(this).css('background-color', 'blue')
+	})
+
+	$('.hover').hover(function(){
+		$(this).css('background-color', 'yellow')
+	})
+
+	$('.mouse-up').mouseup(function(){
+		alert('释放鼠标左键@！！！')
+	})
+
+	$('.one p').one('click' , function(){
+		$(this).css({fontSize: "+=5px"})
+	})
+
+	$('.wrap-test button:first-child').on('click', function(){
+		$('.wrap-test p').wrap('<div></div>')
+	})
+
+	$('.wrap-test button').eq(1).on('click', function(){
+		$('.wrap-test p').unwrap()
+	})
+
+	$('.wrap-test button').eq(2).on('click', function(){
+		$('.wrap-test p').wrapAll('<div></div>')
+	})
+
+	$('.wrap-test button').eq(3).bind('click', function(){
+		$('.wrap-test p').wrapInner('<strong></strong>')
+	})
+
+	// var jq = $.noConflict();
+	// jq('.no-conflict .conflict-btn').bind('click', function(){
+	// 	jq('.no-conflict p').css('background-color', 'green');
+	// });
 });
